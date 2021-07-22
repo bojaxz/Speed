@@ -37,6 +37,10 @@ footer .social > a:hover {
   color: var(--secondary-color);
 }
 
+.logoFont {
+  font-family: 'Racing Sans One', cursive;
+}
+
 .bsicon {
   color: #8312fa;
 }
