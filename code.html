@@ -48,10 +48,10 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/bojaxz/Speed">Git Repo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About the Dev</a>
+                        <a class="nav-link" target="_blank" href="https://liam-morrison-portfolio.netlify.app/">About the Dev</a>
                     </li>
                 </ul>
             </div>
@@ -65,17 +65,87 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                            // Call HelloWorld
-                            function HelloWorld() {
-                                alert("Hello World!");
+                        // get the values from the Page
+                        // Controller function to start/initialize program
+                        function getValues() {
+                            // get values from the page
+                            let startValue = document.getElementById("startValue").value;
+                            let endValue = document.getElementById("endValue").value;
+                        
+                            // Validating our input to prevent unwanted inputs
+                            // parse into integers
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+                        
+                            // if statement to check that start and end values are ints
+                            if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                // call generateNumbers()
+                                let numbers = generateNumbers(startValue, endValue);
+                        
+                                // call displayNumbers()
+                                displayNumbers(numbers);
+                            } else {
+                                alert("You must enter a number in the start and end values.")
                             }
+                        
+                        }
+                        
+                        // generate numbers from startValue to the endValue
+                        function generateNumbers(sValue, eValue) {
+                            
+                            let numbers = [];
+                        
+                            // get all numbers from start to end inclusvie
+                            for (let i = sValue; i <= eValue; i++){
+                                numbers.push(i);
+                                console.log(numbers);
+                            }
+                        
+                            return numbers;
+                        }
+                        
+                        // display numbers and mark even in bold
+                        function displayNumbers(numbers) {
+                            let templateRows = "";
+                            for (let i = 0; i < numbers.length; i++) {
+                                let number = numbers[i];
+                        
+                                if (number % 2 == 0) {
+                                    templateRows += `&lt;tr>&lt;td>&lt;strong>${number}&lt;/strong>&lt;/td>&lt;/tr>`;
+                                } else {
+                                    templateRows += `&lt;tr>&lt;td>${number}&lt;/td>&lt;/tr>`;
+                                }
+                            }
+                        
+                            document.getElementById("results").innerHTML= templateRows;
+                        }
                     </code>
                     </pre>
                 </div>
                 <div class="col col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World!"</p>
+                    <h5>getValues</h5>
+                    <p>
+                        The getValues function grabs the user inputted values from the start and end value form inputs.
+                        It then parses those inputs from strings to integers to later be used in our array.
+                        Once the values have been parsed, we check to ensure that both values are valid ints and not NaN.
+                        If the values are both ints, create a variable called numbers which calls our generateNumbers function.
+                        When generateNumbers is returned, we call displayNumbers to display our numbers variable as a table within our html.
+                        while highlighting the even numbers.
+                    </p>
+                    <h5>generateNumbers</h5>
+                    <p>
+                        This function takes two numbers as parameters, intializes a new variable called numbers to an empty array,
+                        loops through the set of numbers, inclusive, adds it to our numbers array, and finally, returns the array.
+                        The returned array is then used by getValues as a parameter for our displayNumbers function.
+                    </p>
+                    <h5>displayNumbers</h5>
+                    <p>
+                        A function that takes our numbers array, created by the generateNumbers function as a parameter. 
+                        Initializes a templateRows variable as an empty string.
+                        Loops through our numbers array and adds the numbers as table rows to our templateRows string.
+                        Adding the &lt;strong>&lt;/strong> tag to our even numbers.
+                        Then adds our templateRows variable to the innerHTML of our results table to display the user's inputted numbers.
+                    </p>
                 </div>
             </div>
         </div>
@@ -93,9 +163,9 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://linkedin.com/in/liam-morrison-a4547a187" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://github.com/bojaxz" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>
             </div>
